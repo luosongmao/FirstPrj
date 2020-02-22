@@ -1,0 +1,53 @@
+ 1       self.Button1.clicked.connect(lambda:self.on_click1())
+        self.Button2.clicked.connect(lambda:self.on_click2())
+
+    def on_click1(self):
+        print("这个按钮的作用是打开Excel")
+        app = xw.App(visible=True, add_book=False)
+        app.display_alerts = False
+        app.screen_updating = False
+        wb = app.books.open(r'D:\work\ExcelWork\2020Excel数据\Test.xlsx')
+        wb.sheets['Test'].range('A1').value = 'AAA'
+        wb.save()
+
+
+
+    def on_click2(self):
+        #print("这是你点击的退出按钮！")
+        quit()
+
+
+
+if __name__=='__main__':
+    app = QApplication(sys.argv)
+    widget = QtWidgets.QMainWindow()
+    w = Ui_MainWindow()
+    w.setupUi(widget)
+    widget.show()
+    sys.exit(app.exec_())
+
+
+        self.Button1.clicked.connect(lambda: self.on_click1())
+        self.Button2.clicked.connect(lambda: self.on_click2())
+
+    def on_click1(self):
+        pass
+        exl = xw.App(visible=False, add_book=False)
+        exl.screen_updating = False
+        exl.display_alerts = False
+        wex = exl.books.open(r'D:\work\ExcelWork\2020Excel数据\Test.xlsx')
+        grid = wex.sheets[0].range('A:E').value
+
+        wui.tableView.insertActions(grid)
+        wex.quit
+
+    def on_click2(self):
+        quit()
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    widget = QtWidgets.QMainWindow()
+    wui = Ui_MainWindow()
+    wui.setupUi(widget)
+    widget.show()
+    sys.exit(app.exec_())
